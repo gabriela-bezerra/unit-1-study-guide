@@ -103,7 +103,7 @@ def repeat_string(str, n):
 
 def print_sign(num):
     if num > 0:
-        print(" Higher than 0")
+        print("Higher than 0")
     elif num < 0:
         print("Lower than 0")
     elif num == 0:
@@ -186,6 +186,10 @@ def show_sign_and_parity(num):
 #    parameters, making it so the job title defaults to "Engineer" if a job
 #    title is not passed in. Return the person's title and name in one string.
 
+
+def full_title(name, job="Engineer"):
+    return (job + " " + name)
+
 # 2. Write a function called write_letter that, given a recipient name & job
 #    title and a sender name, prints the following letter:
 #
@@ -194,6 +198,12 @@ def show_sign_and_parity(num):
 #
 #    Use the function from #1 to construct the full title for the letter's
 #    greeting.
+
+
+def write_letter(recipient, job, sender):
+
+    print(
+        f"Dear {job} {recipient}, I think you are amazing! Sincerely, {sender}")
 
 
 ###############################################################################
