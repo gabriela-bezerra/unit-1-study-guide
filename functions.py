@@ -120,14 +120,30 @@ def is_divisible_by_three(num):
     else:
         return False
 
+
 # 7. Write a function called 'num_spaces' that takes a sentence as one string
 #    and returns the number of spaces.
+def num_spaces(sentence):
+
+    count = 0
+
+    for i, word in enumerate(sentence):
+        if word == " ":
+            count = count + 1
+    print(count)
 
 
 # 8. Write a function called 'total_meal_price' that can be passed a meal price
 #    and a tip percentage. It should return the total amount paid
 #    (price + price * tip). **However:** passing in the tip percentage should
 #    be optional; if not given, it should default to 15%.
+
+def total_meal_price(meal, tip=.15):
+
+    tip = (meal * tip)
+    total_meal = meal + tip
+
+    return total_meal
 
 
 # 9. Write a function called 'sign_and_parity' that takes an integer as an
@@ -139,6 +155,28 @@ def is_divisible_by_three(num):
 #    unpack what is returned into two variables --- sign and parity (whether
 #    it's even or odd). Print sign and parity.
 
+def sign_and_parity(num):
+
+    result = []
+
+    if num > 0:
+        result.append("Positive")
+    else:
+        result.append("Negative")
+
+    if num % 2 == 0:
+        result.append("Even")
+    else:
+        result.append("Odd")
+
+    return result
+
+
+def show_sign_and_parity(num):
+
+    sign, parity = sign_and_parity(num)
+
+    print(sign, parity)
 
 ###############################################################################
 
@@ -156,6 +194,7 @@ def is_divisible_by_three(num):
 #
 #    Use the function from #1 to construct the full title for the letter's
 #    greeting.
+
 
 ###############################################################################
 # END OF PRACTICE: You can ignore everything below.
