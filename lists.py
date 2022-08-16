@@ -5,6 +5,7 @@ you run this file.
 
 
 from cgitb import small
+from itertools import product
 
 
 def print_list(items):
@@ -91,13 +92,11 @@ def smallest_int(numbers):
         True
     """
 
-    smallest = 0
+    smallest = None
 
     for n in numbers:
-        if n < smallest:
+        if smallest is None or n < smallest:
             smallest = n
-        elif smallest == []:
-            return None
 
     return smallest
 
@@ -119,7 +118,13 @@ def largest_int(numbers):
         True
     """
 
-    return 0
+    largest = None
+
+    for n in numbers:
+        if largest is None or largest < n:
+            largest = n
+
+    return largest
 
 
 def halvesies(numbers):
@@ -136,8 +141,13 @@ def halvesies(numbers):
         >>> halvesies([1, 5])
         [0.5, 2.5]
     """
+    result = []
 
-    return []
+    for n in numbers:
+        n = float(n) / 2
+        result.append(n)
+
+    return result
 
 
 def word_lengths(words):
@@ -149,7 +159,13 @@ def word_lengths(words):
         [5, 3, 5, 4]
     """
 
-    return []
+    word_length = []
+
+    for word in words:
+        word = len(word)
+        word_length.append(word)
+
+    return word_length
 
 
 def sum_numbers(numbers):
@@ -167,8 +183,13 @@ def sum_numbers(numbers):
         >>> sum_numbers([])
         0
     """
+    result = 0
 
-    return None
+    for n in numbers:
+        n = result + n
+        result = n
+
+    return result
 
 
 def mult_numbers(numbers):
@@ -191,7 +212,13 @@ def mult_numbers(numbers):
         1
     """
 
-    return None
+    result = 1
+
+    for n in numbers:
+        n = result * n
+        result = n
+
+    return result
 
 
 def join_strings(words):
@@ -210,7 +237,12 @@ def join_strings(words):
         ''
     """
 
-    return "Not the right thing"
+    joined_strings = ""
+
+    for word in words:
+        joined_strings = joined_strings + word
+
+    return joined_strings
 
 
 def average(numbers):
@@ -232,7 +264,14 @@ def average(numbers):
     a feel free to provide a good solution here.)
     """
 
-    return 0
+    sum = 0
+
+    for n in numbers:
+        sum = sum + n
+
+    result = sum / len(numbers)
+
+    return result
 
 
 def join_strings_with_comma(words):
@@ -251,8 +290,12 @@ def join_strings_with_comma(words):
         >>> join_strings_with_comma(["Pretzel"])
         'Pretzel'
     """
+    joined_strings = words[0]
 
-    return ""
+    for word in words[1:]:
+        joined_strings = joined_strings + ", " + word
+
+    return joined_strings
 
 
 def reverse_list(items):
@@ -276,7 +319,7 @@ def reverse_list(items):
         ['apple', 'berry', 'cherry']
     """
 
-    return []
+    return items[::-1]
 
 
 def reverse_list_in_place(items):
@@ -299,7 +342,10 @@ def reverse_list_in_place(items):
         ['I', 'love', 'cookies']
     """
 
-    return []
+    for i in range(len(items) // 2):
+        temp = items[i]
+        items[i] = items[(i + 1) * -1]
+        items[(i + 1) * - 1] = temp
 
 
 def duplicates(items):
@@ -324,8 +370,16 @@ def duplicates(items):
         >>> orig
         ['apple', 'apple', 'berry']
     """
+    dupes = []
 
-    return []
+    items = sorted(items)
+
+    for i in range(1, len(items)):
+        if items[i] == items[i - 1]:
+            if items[i] not in dupes:
+                dupes.append(items[i])
+
+    return dupes
 
 
 def find_letter_indices(words, letter):
@@ -352,8 +406,19 @@ def find_letter_indices(words, letter):
     ("o" does not appear in "jumps", so the result for that input is
     `None`.)
     """
+    indices = []
 
-    return []
+    for word in words:
+        found_at = None
+
+        for i in range(len(word)):
+            if word[i] == letter:
+                found_at = i
+                break
+
+        indices.append(found_at)
+
+    return indices
 
 
 #####################################################################
